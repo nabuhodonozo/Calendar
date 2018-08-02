@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calendar.Controller">
+    <children>
+        <GridPane fx:id="gridPane" gridLinesVisible="true" layoutY="54.0" prefHeight="347.0" prefWidth="600.0">
+            <columnConstraints>
+                <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="5.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <TextField alignment="CENTER" disable="true" editable="false" GridPane.columnIndex="0">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </TextField>
+                <TextField alignment="CENTER" disable="true" editable="false" GridPane.columnIndex="1">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </TextField>
+                <TextField alignment="CENTER" disable="true" editable="false" GridPane.columnIndex="2">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </TextField>
+                <TextField alignment="CENTER" disable="true" editable="false" GridPane.columnIndex="3">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </TextField>
+                <TextField alignment="CENTER" disable="true" editable="false" GridPane.columnIndex="4">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </TextField>
+                <TextField alignment="CENTER" disable="true" editable="false" GridPane.columnIndex="5">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </TextField>
+                <TextField alignment="CENTER" disable="true" editable="false" GridPane.columnIndex="6">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </TextField>
+            </children>
+        </GridPane>
+        <DatePicker fx:id="datePicker" layoutX="191.0" layoutY="15.0" />
+        <ComboBox fx:id="comboBox" layoutX="436.0" layoutY="15.0" prefWidth="150.0" promptText="Week">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Month" />
+                    <String fx:value="Week" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </children>
+</AnchorPane>
