@@ -1,15 +1,10 @@
 package calendar.View;
 
-import calendar.View.Components.menuPanel;
-import calendar.model.SkipButton;
-import calendar.model.TextFieldDisplay;
-import calendar.model.ViewSwitch;
-import org.jdesktop.swingx.JXDatePicker;
+import calendar.model.CalendarDisplayPanel;
+import calendar.model.MenuPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class View extends JFrame {
     public View() {
@@ -17,15 +12,11 @@ public class View extends JFrame {
     }
 
     private void initUI() {
-        getContentPane().setLayout(
-                new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS)
-        );
+        getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
 
-        JPanel menuPanel = new calendar.View.Components.menuPanel();
-
-
-        this.add(menuPanel);
-        this.add(calenarDisplayPanel());
+        //FIXME It should be probably singletone cuz I am gonna use it again when switching View
+        this.add(new MenuPanel());
+        this.add(new CalendarDisplayPanel(7));
 
         setTitle("Calendar");
         setSize(1000, 700);
@@ -37,18 +28,5 @@ public class View extends JFrame {
             View ex = new View();
             ex.setVisible(true);
         });
-    }
-
-
-    public JPanel calenarDisplayPanel(){
-        JPanel panel = new JPanel();
-
-
-        JTextField tf = new TextFieldDisplay();
-
-        tf.setColumns(20);
-
-        panel.add(tf);
-        return panel;
     }
 }

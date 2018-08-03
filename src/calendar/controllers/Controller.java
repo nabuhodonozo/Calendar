@@ -1,8 +1,9 @@
 package calendar.controllers;
 
-import calendar.model.DateUpdate;
-import calendar.model.ViewUpdate;
+import calendar.interfaces.DateUpdate;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
@@ -12,22 +13,17 @@ public class Controller {
         return ourInstance;
     }
 
-    private List<ViewUpdate> ViewComponents;
-
-    private List<DateUpdate> DateComponents;
+    private List<DateUpdate> DateComponents = new ArrayList<>();
 
     private Controller() {}
 
-
-/*    private void viewUpdate(){
-        ViewComponents.forEach(component -> {
-            component.update(View view);
-        });
+    public void addDateComponents(DateUpdate component){
+        DateComponents.add(component);
     }
 
-    private void DateComponents(){
+    public void updateDateDisplayComponents(LocalDate date){
         DateComponents.forEach(component -> {
-            component.update(LocalDate date);
+            component.dateUpdate(date);
         });
-    }*/
+    }
 }
