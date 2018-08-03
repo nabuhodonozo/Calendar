@@ -2,6 +2,7 @@ package calendar.model;
 
 import calendar.controllers.Controller;
 import calendar.interfaces.DateUpdate;
+import calendar.interfaces.ViewUpdate;
 
 import javax.swing.*;
 import java.time.LocalDate;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class CalendarDisplayPanel extends JPanel implements DateUpdate {
+public class CalendarDisplayPanel extends JPanel implements DateUpdate, ViewUpdate {
     private List<JTextField> display = new ArrayList<>();
 
     public CalendarDisplayPanel(int numberOfFields) {
@@ -37,5 +38,10 @@ public class CalendarDisplayPanel extends JPanel implements DateUpdate {
             textField.setColumns(10);
             display.add(textField);
         }
+    }
+
+    @Override
+    public void viewUpdate() {
+
     }
 }
