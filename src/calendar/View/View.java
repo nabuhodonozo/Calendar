@@ -1,10 +1,14 @@
 package calendar.View;
 
 import calendar.model.SkipButton;
+import calendar.model.TextFieldDisplay;
+import calendar.model.ViewSwitch;
 import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class View extends JFrame {
     public View() {
@@ -12,25 +16,15 @@ public class View extends JFrame {
     }
 
     private void initUI() {
-        JPanel panel = new JPanel();
+        getContentPane().setLayout(
+                new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS)
+        );
 
+        JPanel menuPanel = menuPanel();
 
-        panel.add(new SkipButton("left"));
-        panel.add(new JXDatePicker());
-        panel.add(new SkipButton("right"));
+        this.add(menuPanel);
+        this.add(calenarDisplayPanel());
 
-        String[] bookTitles = new String[] {"Week, Month"};
-
-        JComboBox<String> bookList = new JComboBox<>(bookTitles);
-
-
-        String selectedBook = (String) bookList.getSelectedItem();
-        System.out.println("You seleted the book: " + selectedBook);
-
-        panel.add(bookList);
-
-
-        this.getContentPane().add(panel);
         setTitle("Calendar");
         setSize(1000, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -42,13 +36,35 @@ public class View extends JFrame {
             ex.setVisible(true);
         });
     }
-/*
-    public JPanel menuPanel(){
 
-        return
+    public JPanel menuPanel(){
+        JPanel panel = new JPanel();
+
+        panel.add(new SkipButton("previous"));
+        panel.add(new JXDatePicker());
+        panel.add(new SkipButton("next"));
+
+        String[] bookTitles = new String[] {"Week", "Month"};
+
+        JComboBox<String> bookList = new ViewSwitch(bookTitles);
+
+        String selectedBook = (String) bookList.getSelectedItem();
+        System.out.println("You seleted the book: " + selectedBook);
+
+        panel.add(bookList);
+
+        return panel;
     }
 
-    public Jpanel calenarDisplayPanel(){
+    public JPanel calenarDisplayPanel(){
+        JPanel panel = new JPanel();
 
-    }*/
+
+        JTextField tf = new TextFieldDisplay();
+
+        tf.setColumns(20);
+
+        panel.add(tf);
+        return panel;
+    }
 }
