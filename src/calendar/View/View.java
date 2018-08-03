@@ -1,5 +1,6 @@
 package calendar.View;
 
+import calendar.View.Components.menuPanel;
 import calendar.model.SkipButton;
 import calendar.model.TextFieldDisplay;
 import calendar.model.ViewSwitch;
@@ -20,7 +21,8 @@ public class View extends JFrame {
                 new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS)
         );
 
-        JPanel menuPanel = menuPanel();
+        JPanel menuPanel = new calendar.View.Components.menuPanel();
+
 
         this.add(menuPanel);
         this.add(calenarDisplayPanel());
@@ -37,24 +39,6 @@ public class View extends JFrame {
         });
     }
 
-    public JPanel menuPanel(){
-        JPanel panel = new JPanel();
-
-        panel.add(new SkipButton("previous"));
-        panel.add(new JXDatePicker());
-        panel.add(new SkipButton("next"));
-
-        String[] bookTitles = new String[] {"Week", "Month"};
-
-        JComboBox<String> bookList = new ViewSwitch(bookTitles);
-
-        String selectedBook = (String) bookList.getSelectedItem();
-        System.out.println("You seleted the book: " + selectedBook);
-
-        panel.add(bookList);
-
-        return panel;
-    }
 
     public JPanel calenarDisplayPanel(){
         JPanel panel = new JPanel();
