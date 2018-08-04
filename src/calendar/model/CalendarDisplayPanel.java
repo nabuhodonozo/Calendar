@@ -26,10 +26,9 @@ public class CalendarDisplayPanel extends JPanel implements DateUpdate, ViewUpda
     @Override
     public void dateUpdate(LocalDate date) {
         LocalDate startOfWeek = date.minusDays(date.getDayOfWeek().getValue() - 1);
-        AtomicInteger atomicInteger = new AtomicInteger(0);
-        display.forEach(jTextField -> {
-            jTextField.setText(startOfWeek.plusDays(atomicInteger.getAndIncrement()).toString());
-        });
+        for(int i=0; i<display.size();i++){
+            display.get(i).setText(startOfWeek.plusDays(i).toString());
+        }
     }
 
     private void createTextFields(int numberOfFields) {
