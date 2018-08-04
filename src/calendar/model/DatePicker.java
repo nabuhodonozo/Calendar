@@ -18,13 +18,20 @@ public class DatePicker extends JXDatePicker {
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LocalDate localDate = DatePicker.super.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                Controller.getInstance().updateDateDisplayComponents(localDate);
+                Controller.getInstance().updateDateDisplayComponents(getLocalDate());
             }
         });
     }
 
     public static DatePicker getInstance() {
         return ourInstance;
+    }
+
+    private LocalDate convertDateToLocalDate(Date date) {
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    public LocalDate getLocalDate() {
+        return convertDateToLocalDate(this.getDate());
     }
 }
