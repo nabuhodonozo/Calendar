@@ -14,28 +14,28 @@ public class Controller {
         return ourInstance;
     }
 
-    private List<DateUpdate> DateComponents = new ArrayList<>();
+    private List<DateUpdate> dateComponents = new ArrayList<>();
 
-    private List<ViewUpdate> ViewComponents = new ArrayList<>();
+    private List<ViewUpdate> viewComponents = new ArrayList<>();
 
     private Controller() {}
 
     public void addDateComponents(DateUpdate component){
-        DateComponents.add(component);
+        dateComponents.add(component);
     }
 
     public void addViewComponents(ViewUpdate component){
-        ViewComponents.add(component);
+        viewComponents.add(component);
     }
 
     public void updateDateDisplayComponents(LocalDate date){
-        DateComponents.forEach(component -> {
+        dateComponents.forEach(component -> {
             component.dateUpdate(date);
         });
     }
 
     public void updateViewDisplayComponents(){
-        ViewComponents.forEach(component -> {
+        viewComponents.forEach(component -> {
             component.viewUpdate();
         });
     }
