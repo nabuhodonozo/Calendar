@@ -22,7 +22,7 @@ public class Main extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    public static void run(){
+    public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             Main ex = new Main();
             ex.setVisible(true);
