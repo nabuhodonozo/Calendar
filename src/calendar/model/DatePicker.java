@@ -10,7 +10,9 @@ import java.time.ZoneId;
 import java.util.Date;
 
 public class DatePicker extends JXDatePicker {
-    public DatePicker() {
+    private static DatePicker ourInstance = new DatePicker();
+
+    private DatePicker() {
         this.setDate(new Date());
 
         this.addActionListener(new ActionListener() {
@@ -20,5 +22,9 @@ public class DatePicker extends JXDatePicker {
                 Controller.getInstance().updateDateDisplayComponents(localDate);
             }
         });
+    }
+
+    public static DatePicker getInstance() {
+        return ourInstance;
     }
 }
