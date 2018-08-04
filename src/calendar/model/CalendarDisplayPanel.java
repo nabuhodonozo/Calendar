@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class CalendarDisplayPanel extends JPanel implements DateUpdate, ViewUpdate {
     private List<JTextField> display = new ArrayList<>();
@@ -33,8 +32,7 @@ public class CalendarDisplayPanel extends JPanel implements DateUpdate, ViewUpda
 
     private void createTextFields(int numberOfFields) {
         for (int i = 0; i < numberOfFields; i++) {
-            JTextField textField = new JTextField();
-            textField.setColumns(10);
+            JTextField textField = new TextField();
             display.add(textField);
         }
     }
