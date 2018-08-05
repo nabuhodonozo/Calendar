@@ -12,7 +12,7 @@ public class ViewSwitch extends ComboBox {
         super();
 
         this.setModel(new DefaultComboBoxModel<>(Views.values()));
-        
+
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
