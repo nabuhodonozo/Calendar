@@ -8,11 +8,8 @@ public class MenuPanel extends JPanel {
         this.add(DatePicker.getInstance());
         this.add(new SkipButton("next"));
 
-        String[] views = new String[] {"Week", "Month"};
+        JComboBox<Views> viewSwitch = new ViewSwitch();
 
-        JComboBox<String> viewSwitch = new ViewSwitch(views);
-
-        String selectedView = (String) viewSwitch.getSelectedItem();
 
         this.add(viewSwitch);
     }
