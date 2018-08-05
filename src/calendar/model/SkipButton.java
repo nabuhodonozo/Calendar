@@ -8,11 +8,8 @@ import java.awt.event.ActionListener;
 
 
 public class SkipButton extends JButton {
-    public SkipButton() {
-    }
-
-    public SkipButton(String text) {
-        super(text);
+    public SkipButton(skipDirection skipDirection) {
+        setText(skipDirection);
 
         this.addActionListener(new ActionListener() {
             @Override
@@ -20,5 +17,18 @@ public class SkipButton extends JButton {
                 Controller.getInstance().updateDateDisplayComponents(DatePicker.getInstance().getLocalDate());
             }
         });
+    }
+
+    public void setText(skipDirection skipDirection) {
+        if (skipDirection.equals(SkipButton.skipDirection.BACKWARD)) {
+            this.setText("<");
+        } else {
+            this.setText(">");
+        }
+    }
+
+    public enum skipDirection {
+        FORWARD,
+        BACKWARD
     }
 }
