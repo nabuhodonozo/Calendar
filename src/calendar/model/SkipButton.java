@@ -35,7 +35,7 @@ public class SkipButton extends JButton {
     }
 
     private void setButtonProperties(String text, int dateMultiplierBasedOnDirection) {
-        setText("text");
+        setText(text);
         this.dateMultiplierBasedOnDirection = dateMultiplierBasedOnDirection;
     }
 
