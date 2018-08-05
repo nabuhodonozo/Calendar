@@ -9,8 +9,6 @@ public class MenuPanel extends JPanel {
         this.add(new SkipButton(SkipButton.skipDirection.FORWARD));
 
         JComboBox<Views> viewSwitch = new ViewSwitch();
-
-
         this.add(viewSwitch);
     }
 }

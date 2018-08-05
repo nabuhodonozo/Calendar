@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 
 public class SkipButton extends JButton {
-    private int dateMultiplierBasedOnDirection; //1 forward -1 backward
+    private int dateMultiplierBasedOnDirection;
 
     public SkipButton(skipDirection skipDirection) {
         setPropertiesBasedOnSkipDirection(skipDirection);

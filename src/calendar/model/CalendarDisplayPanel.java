@@ -38,7 +38,7 @@ public class CalendarDisplayPanel extends JPanel implements DateUpdate, ViewUpda
     }
 
     @Override
-    public void viewUpdate() {
+    public void viewUpdate(Object View) {
 
     }
 }

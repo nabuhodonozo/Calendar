@@ -34,9 +34,9 @@ public class Controller {
         });
     }
 
-    public void updateViewDisplayComponents(){
+    public void updateViewDisplayComponents(Object View) {
         viewComponents.forEach(component -> {
-            component.viewUpdate();
+            component.viewUpdate(View);
         });
     }
 }

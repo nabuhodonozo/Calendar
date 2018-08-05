@@ -1,5 +1,5 @@
 package calendar.interfaces;
 
 public interface ViewUpdate {
-    void viewUpdate();
+    void viewUpdate(Object View);
 }
