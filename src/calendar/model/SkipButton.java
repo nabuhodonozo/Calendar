@@ -5,26 +5,42 @@ import calendar.controllers.Controller;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 
 public class SkipButton extends JButton {
+    private int dateMultiplierBasedOnDirection; //1 forward -1 backward
+
     public SkipButton(skipDirection skipDirection) {
-        setText(skipDirection);
+        setPropertiesBasedOnSkipDirection(skipDirection);
 
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.getInstance().updateDateDisplayComponents(DatePicker.getInstance().getLocalDate());
+                LocalDate dateToPass = calculateDate(
+                        DatePicker
+                                .getInstance()
+                                .getLocalDate());
+                Controller.getInstance().updateDateDisplayComponents(dateToPass);
             }
         });
     }
 
-    public void setText(skipDirection skipDirection) {
+    private void setPropertiesBasedOnSkipDirection(skipDirection skipDirection) {
         if (skipDirection.equals(SkipButton.skipDirection.BACKWARD)) {
-            this.setText("<");
+            setButtonProperties("<", -1);
         } else {
-            this.setText(">");
+            setButtonProperties(">", 1);
         }
+    }
+
+    private void setButtonProperties(String text, int dateMultiplierBasedOnDirection) {
+        setText("text");
+        this.dateMultiplierBasedOnDirection = dateMultiplierBasedOnDirection;
+    }
+
+    private LocalDate calculateDate(LocalDate localDate) {
+        return localDate.plusDays(7 * dateMultiplierBasedOnDirection);
     }
 
     public enum skipDirection {
