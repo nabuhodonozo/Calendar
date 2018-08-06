@@ -11,9 +11,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 public class DatePicker extends JXDatePicker implements DateUpdate {
-    private static DatePicker ourInstance = new DatePicker();
-
-    private DatePicker() {
+    public DatePicker() {
         Controller.getInstance().addDateComponents(this);
 
         this.addActionListener(new ActionListener() {
@@ -22,10 +20,6 @@ public class DatePicker extends JXDatePicker implements DateUpdate {
                 Controller.getInstance().updateDateDisplayComponents(getLocalDate());
             }
         });
-    }
-
-    public static DatePicker getInstance() {
-        return ourInstance;
     }
 
     private LocalDate convertDateToLocalDate(Date date) {

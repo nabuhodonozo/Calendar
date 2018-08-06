@@ -11,15 +11,14 @@ import java.time.LocalDate;
 public class SkipButton extends JButton {
     private int dateMultiplierBasedOnDirection;
 
-    public SkipButton(skipDirection skipDirection) {
+    public SkipButton(DatePicker datePicker, skipDirection skipDirection) {
         setPropertiesBasedOnSkipDirection(skipDirection);
 
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 LocalDate dateToPass = calculateDate(
-                        DatePicker
-                                .getInstance()
+                        datePicker
                                 .getLocalDate());
                 Controller.getInstance().updateDateDisplayComponents(dateToPass);
             }
