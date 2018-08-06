@@ -17,9 +17,7 @@ public class SkipButton extends JButton {
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LocalDate dateToPass = calculateDate(
-                        datePicker
-                                .getLocalDate());
+                LocalDate dateToPass = calculateDate(datePicker.getLocalDate());
                 Controller.getInstance().updateDateDisplayComponents(dateToPass);
             }
         });
