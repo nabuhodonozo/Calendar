@@ -1,7 +1,7 @@
 package calendar.app;
 
+import calendar.controllers.CalendarDisplayPanelController;
 import calendar.controllers.Controller;
-import calendar.model.CalendarDisplayPanel;
 import calendar.model.MenuPanel;
 
 import javax.swing.*;
@@ -17,7 +17,7 @@ public class Main extends JFrame {
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
 
         this.add(new MenuPanel());
-        this.add(new CalendarDisplayPanel());
+        this.add(CalendarDisplayPanelController.getInstance().getView());
 
         setDateInAllDateUpdateComponents();
 

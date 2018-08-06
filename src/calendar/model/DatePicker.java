@@ -14,8 +14,6 @@ public class DatePicker extends JXDatePicker implements DateUpdate {
     private static DatePicker ourInstance = new DatePicker();
 
     private DatePicker() {
-        this.setDate(new Date());
-
         Controller.getInstance().addDateComponents(this);
 
         this.addActionListener(new ActionListener() {
