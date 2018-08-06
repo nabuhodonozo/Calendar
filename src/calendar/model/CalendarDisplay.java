@@ -1,45 +1,39 @@
 package calendar.model;
 
-import calendar.controllers.Controller;
-import calendar.interfaces.DateUpdate;
-import calendar.interfaces.ViewUpdate;
-
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CalendarDisplay extends JPanel implements ViewUpdate, DateUpdate {
+public class CalendarDisplay extends JPanel {
     private List<JTextField> display = new ArrayList<>();
 
-    public CalendarDisplay(int numberOfRows, int numberOfColumns, int numberOfTextFields) {
-        Controller.getInstance().addDateComponents(this);
-
+    public CalendarDisplay(int numberOfRows, int numberOfColumns) {
         GridLayout experimentLayout = new GridLayout(numberOfRows, numberOfColumns);
         setLayout(experimentLayout);
 
-        createTextFields(numberOfTextFields);
+        createTextFieldDisplay(numberOfRows * numberOfColumns);
 
         display.forEach(jTextField -> this.add(jTextField));
     }
 
-    private void createTextFields(int numberOfFields) {
-        for (int i = 0; i < numberOfFields; i++) {
-            JTextField textField = new TextField();
-            display.add(textField);
-        }
-    }
-
-    @Override
-    public void dateUpdate(LocalDate date) {
+    public void setTextInTextFields(LocalDate date) {
         for (int i = 0; i < display.size(); i++) {
             display.get(i).setText(date.plusDays(i).toString());
         }
     }
 
-    @Override
-    public void viewUpdate(Object View) {
+    public void createTextFieldDisplay(int numberOfTextFields) {
+        for (int i = 0; i < numberOfTextFields; i++) {
+            JTextField textField = new TextField();
+            display.add(textField);
+        }
+    }
 
+    class TextField extends JTextField {
+        public TextField() {
+            this.setColumns(10);
+        }
     }
 }
