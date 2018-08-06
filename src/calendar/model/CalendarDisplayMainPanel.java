@@ -12,8 +12,6 @@ public class CalendarDisplayMainPanel extends JPanel implements ViewUpdate, Date
     private CalendarDisplay Week = new CalendarDisplay(1, 7);
     private CalendarDisplay Month = new CalendarDisplay(6, 7);
 
-    private CalendarDisplay currentViewPanel = Week;
-
     public CalendarDisplayMainPanel() {
         super(new CardLayout());
         Controller.getInstance().addViewComponents(this);
@@ -30,8 +28,12 @@ public class CalendarDisplayMainPanel extends JPanel implements ViewUpdate, Date
 
     @Override
     public void dateUpdate(LocalDate date) {
-        Week.setTextInTextFields(date);
-        Month.setTextInTextFields(date);
+        LocalDate startOfWeek = date.minusDays(date.getDayOfWeek().getValue() - 1);
+        Week.setTextInTextFields(startOfWeek);
+        
+        int moveIndex = date.minusDays(date.getDayOfMonth()).getDayOfWeek().getValue() - 1;
+        LocalDate startOfMonth = date.minusDays(date.getDayOfMonth() + moveIndex);
+        Month.setTextInTextFields(startOfMonth);
     }
 }
 
