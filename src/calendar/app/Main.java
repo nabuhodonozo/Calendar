@@ -1,10 +1,12 @@
 package calendar.app;
 
+import calendar.controllers.Controller;
 import calendar.model.CalendarDisplayPanel;
 import calendar.model.MenuPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
 
 public class Main extends JFrame {
     public Main() {
@@ -15,7 +17,9 @@ public class Main extends JFrame {
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
 
         this.add(new MenuPanel());
-        this.add(new CalendarDisplayPanel(7));
+        this.add(new CalendarDisplayPanel());
+
+        setDateInAllDateUpdateComponents();
 
         setTitle("Calendar");
         setSize(1000, 700);
@@ -27,5 +31,9 @@ public class Main extends JFrame {
             Main ex = new Main();
             ex.setVisible(true);
         });
+    }
+
+    private void setDateInAllDateUpdateComponents() {
+        Controller.getInstance().updateDateDisplayComponents(LocalDate.now());
     }
 }
