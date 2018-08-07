@@ -1,5 +1,6 @@
 package calendar.controllers;
 
+import calendar.Enum.Views;
 import calendar.interfaces.DateUpdate;
 import calendar.interfaces.ViewUpdate;
 
@@ -34,7 +35,7 @@ public class Controller {
         });
     }
 
-    public void updateViewDisplayComponents(Object View) {
+    public void updateViewDisplayComponents(Views View) {
         viewComponents.forEach(component -> {
             component.viewUpdate(View);
         });

@@ -17,7 +17,7 @@ public class ViewSwitch extends ComboBox {
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.getInstance().updateViewDisplayComponents(getSelectedItem());
+                Controller.getInstance().updateViewDisplayComponents((Views) getSelectedItem());
             }
         });
     }

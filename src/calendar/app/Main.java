@@ -23,7 +23,6 @@ public class Main extends JFrame {
     private void initUI() {
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
 
-
         this.add(new MenuPanel());
         this.add(new CalendarDisplayMainPanel());
 

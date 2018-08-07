@@ -1,5 +1,6 @@
 package calendar.model;
 
+import calendar.Enum.Views;
 import calendar.controllers.Controller;
 import calendar.interfaces.DateUpdate;
 import calendar.interfaces.ViewUpdate;
@@ -16,14 +17,14 @@ public class CalendarDisplayMainPanel extends JPanel implements ViewUpdate, Date
         super(new CardLayout());
         Controller.getInstance().addViewComponents(this);
         Controller.getInstance().addDateComponents(this);
-        add(Week, "Week");
-        add(Month, "Month");
+        add(Week, "WEEK");
+        add(Month, "MONTH");
     }
 
     @Override
-    public void viewUpdate(Object View) {
+    public void viewUpdate(Views View) {
         CardLayout cardLayout = (CardLayout) this.getLayout();
-        cardLayout.next(this);
+        cardLayout.show(this, View.toString());
     }
 
     @Override
