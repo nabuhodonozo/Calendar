@@ -1,9 +1,9 @@
-package calendar.model;
+package calendar.views.panels;
 
-import calendar.Enum.Views;
 import calendar.controllers.Controller;
 import calendar.interfaces.DateUpdate;
 import calendar.interfaces.ViewUpdate;
+import calendar.views.Views;
 
 import javax.swing.*;
 import java.awt.*;

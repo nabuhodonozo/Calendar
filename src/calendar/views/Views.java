@@ -1,4 +1,4 @@
-package calendar.Enum;
+package calendar.views;
 
 public enum Views {
     WEEK,

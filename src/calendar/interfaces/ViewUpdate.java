@@ -1,6 +1,6 @@
 package calendar.interfaces;
 
-import calendar.Enum.Views;
+import calendar.views.Views;
 
 public interface ViewUpdate {
     void viewUpdate(Views View);

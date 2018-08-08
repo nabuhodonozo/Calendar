@@ -1,4 +1,4 @@
-package calendar.model;
+package calendar.views.panels;
 
 import javax.swing.*;
 import java.awt.*;

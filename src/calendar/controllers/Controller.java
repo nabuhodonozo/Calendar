@@ -1,8 +1,8 @@
 package calendar.controllers;
 
-import calendar.Enum.Views;
 import calendar.interfaces.DateUpdate;
 import calendar.interfaces.ViewUpdate;
+import calendar.views.Views;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

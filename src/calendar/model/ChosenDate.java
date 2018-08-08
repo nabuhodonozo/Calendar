@@ -1,5 +1,4 @@
 package calendar.model;
 
-public class SkipButton {
-
+public class ChosenDate {
 }

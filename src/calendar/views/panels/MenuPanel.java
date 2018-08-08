@@ -1,6 +1,9 @@
-package calendar.model;
+package calendar.views.panels;
 
-import calendar.Enum.Views;
+import calendar.views.ViewSwitch;
+import calendar.views.Views;
+import calendar.views.components.DatePicker;
+import calendar.views.components.SkipButton;
 
 import javax.swing.*;
 

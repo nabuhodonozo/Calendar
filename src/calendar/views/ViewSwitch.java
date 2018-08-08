@@ -1,6 +1,5 @@
-package calendar.model;
+package calendar.views;
 
-import calendar.Enum.Views;
 import calendar.controllers.Controller;
 import com.intellij.openapi.ui.ComboBox;
 
