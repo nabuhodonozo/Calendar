@@ -19,7 +19,6 @@ public class Controller {
     private SkipButton skipButton = new SkipButton();
 
     private Controller() {
-        //TODO is this the proper place for registering them?
         addDateComponents(chosenDate);
         addViewComponents(skipButton);
     }
