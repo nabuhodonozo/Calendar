@@ -49,7 +49,6 @@ public class Controller {
     }
 
 
-    //TODO Spirng mvc approach on the other hand ViewType can directly tell model that it was clicked. But should ViewType be able to interact with model?
     public void skipButtonClicked(ButtonType buttonType) {
         skipButton.skipButtonClicked(buttonType, chosenDate.getLocalDate());
     }
