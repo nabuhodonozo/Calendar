@@ -5,11 +5,11 @@ import java.time.ZoneId;
 import java.util.Date;
 
 public class DateConverter {
-    public LocalDate convertDateToLocalDate(Date date) {
+    public LocalDate DateToLocalDate(Date date) {
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    public Date converDatetoLocalDate(LocalDate localDate) {
+    public Date LocalDatetoDate(LocalDate localDate) {
         return java.util.Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
     }
 }

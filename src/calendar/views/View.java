@@ -1,6 +1,6 @@
 package calendar.views;
 
-public enum Views {
+public enum View {
     WEEK,
     MONTH
 }

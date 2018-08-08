@@ -2,13 +2,12 @@ package calendar.views.components;
 
 import calendar.controllers.Controller;
 import calendar.interfaces.DateUpdate;
+import calendar.utils.DateConverter;
 import org.jdesktop.swingx.JXDatePicker;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 
 public class DatePicker extends JXDatePicker implements DateUpdate {
     public DatePicker() {
@@ -17,25 +16,16 @@ public class DatePicker extends JXDatePicker implements DateUpdate {
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.getInstance().updateDateDisplayComponents(getLocalDate());
+                DateConverter dateConverter = new DateConverter();
+                Controller controller = Controller.getInstance();
+                controller.updateDateDisplayComponents(dateConverter.DateToLocalDate(getDate()));
             }
         });
     }
 
-    private LocalDate convertDateToLocalDate(Date date) {
-        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    }
-
-    private Date converDatetoLocalDate(LocalDate localDate) {
-        return java.util.Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-    }
-
-    public LocalDate getLocalDate() {
-        return convertDateToLocalDate(this.getDate());
-    }
-
     @Override
     public void dateUpdate(LocalDate localDate) {
-        this.setDate(converDatetoLocalDate(localDate));
+        DateConverter dateConverter = new DateConverter();
+        this.setDate(dateConverter.LocalDatetoDate(localDate));
     }
 }
