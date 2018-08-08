@@ -17,13 +17,13 @@ public class DatePicker extends JXDatePicker implements DateUpdate {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controller controller = Controller.getInstance();
-                controller.updateDateDisplayComponents(DateConverter.DateToLocalDate(getDate()));
+                controller.updateDateDisplayComponents(DateConverter.dateToLocalDate(getDate()));
             }
         });
     }
 
     @Override
     public void dateUpdate(LocalDate localDate) {
-        this.setDate(DateConverter.LocalDatetoDate(localDate));
+        this.setDate(DateConverter.localDatetoDate(localDate));
     }
 }
