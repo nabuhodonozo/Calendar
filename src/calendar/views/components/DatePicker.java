@@ -2,7 +2,7 @@ package calendar.views.components;
 
 import calendar.controllers.Controller;
 import calendar.interfaces.DateUpdate;
-import calendar.utils.DateConverter;
+import calendar.utils.DateUtil;
 import org.jdesktop.swingx.JXDatePicker;
 
 import java.awt.event.ActionEvent;
@@ -17,13 +17,13 @@ public class DatePicker extends JXDatePicker implements DateUpdate {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controller controller = Controller.getInstance();
-                controller.updateDateDisplayComponents(DateConverter.dateToLocalDate(getDate()));
+                controller.updateDateDisplayComponents(DateUtil.dateToLocalDate(getDate()));
             }
         });
     }
 
     @Override
     public void dateUpdate(LocalDate localDate) {
-        this.setDate(DateConverter.localDatetoDate(localDate));
+        this.setDate(DateUtil.localDatetoDate(localDate));
     }
 }

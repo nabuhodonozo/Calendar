@@ -1,16 +1,15 @@
 package calendar.model;
 
+import calendar.utils.DateUtil;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarDisplayWeekModel extends CalendarDisplayAbstractModel {
-    public CalendarDisplayWeekModel() {
-    }
-
     @Override
     public void updateDatesInList(LocalDate localDate) {
-        LocalDate startOfWeek = startOfWeek(localDate);
+        LocalDate startOfWeek = DateUtil.startOfWeek(localDate);
 
         List<LocalDate> list = new ArrayList<>();
 
@@ -19,9 +18,5 @@ public class CalendarDisplayWeekModel extends CalendarDisplayAbstractModel {
         }
 
         dayList = list;
-    }
-
-    public LocalDate startOfWeek(LocalDate localDate) {
-        return localDate.minusDays(localDate.getDayOfWeek().getValue() - 1);
     }
 }

@@ -4,9 +4,6 @@ import calendar.model.CalendarDisplayWeekModel;
 
 public class CalendarDisplayWeek extends CalendarDisplayAbstract {
     public CalendarDisplayWeek() {
-        super(
-                new CalendarDisplayWeekModel(),
-                1
-        );
+        super(new CalendarDisplayWeekModel(), 1);
     }
 }

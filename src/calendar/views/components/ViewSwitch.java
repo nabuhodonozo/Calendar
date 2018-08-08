@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ViewSwitch extends ComboBox {
-    public ViewSwitch(){
+    public ViewSwitch() {
         super();
 
         this.setModel(new DefaultComboBoxModel<>(ViewType.values()));
@@ -22,7 +22,7 @@ public class ViewSwitch extends ComboBox {
         });
     }
 
-    public ViewSwitch(String[] stringArray){
+    public ViewSwitch(String[] stringArray) {
         super(stringArray);
     }
 }

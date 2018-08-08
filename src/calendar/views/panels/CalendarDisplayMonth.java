@@ -4,10 +4,6 @@ import calendar.model.CalendarDisplayMonthModel;
 
 public class CalendarDisplayMonth extends CalendarDisplayAbstract {
     public CalendarDisplayMonth() {
-        super(
-                new CalendarDisplayMonthModel(),
-                6
-
-        );
+        super(new CalendarDisplayMonthModel(), 6);
     }
 }

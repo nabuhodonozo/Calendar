@@ -14,14 +14,14 @@ public class CalendarDisplayMainPanel extends JPanel implements ViewUpdate {
     public CalendarDisplayMainPanel() {
         super(new CardLayout());
         Controller.getInstance().addViewComponents(this);
-        add(week, "WEEK");
-        add(month, "MONTH");
+        add(week, "week");
+        add(month, "month");
     }
 
     @Override
     public void viewUpdate(ViewType viewType) {
         CardLayout cardLayout = (CardLayout) this.getLayout();
-        cardLayout.show(this, viewType.toString());
+        cardLayout.show(this, viewType.toString().toLowerCase());
     }
 }
 

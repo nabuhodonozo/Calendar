@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
-public final class DateConverter {
-    private DateConverter() {
+public final class DateUtil {
+    private DateUtil() {
     }
 
     public static Date localDatetoDate(LocalDate localDate) {
@@ -14,5 +14,9 @@ public final class DateConverter {
 
     public static LocalDate dateToLocalDate(Date date) {
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    public static LocalDate startOfWeek(LocalDate localDate) {
+        return localDate.minusDays(localDate.getDayOfWeek().getValue() - 1);
     }
 }

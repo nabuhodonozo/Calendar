@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarDisplayMonthModel extends CalendarDisplayAbstractModel {
-    public CalendarDisplayMonthModel() {
-    }
-
     @Override
     public void updateDatesInList(LocalDate localDate) {
         LocalDate startOfMonth = startOfMonth(localDate);

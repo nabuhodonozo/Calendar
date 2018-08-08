@@ -18,12 +18,7 @@ public abstract class CalendarDisplayAbstractModel implements DateUpdate {
         return dayList;
     }
 
-    public void setDayList(List<LocalDate> dayList) {
-        this.dayList = dayList;
-    }
-
     public abstract void updateDatesInList(LocalDate localDate);
-
 
     @Override
     public void dateUpdate(LocalDate localDate) {
