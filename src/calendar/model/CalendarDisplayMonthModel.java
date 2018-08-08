@@ -15,7 +15,7 @@ public class CalendarDisplayMonthModel extends CalendarDisplayAbstractModel {
         List<LocalDate> list = new ArrayList<>();
 
         for (int i = 0; i < 42; i++) {
-            list.add(localDate);
+            list.add(startOfMonth.plusDays(i));
         }
 
         dayList = list;

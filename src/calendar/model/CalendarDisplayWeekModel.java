@@ -15,7 +15,7 @@ public class CalendarDisplayWeekModel extends CalendarDisplayAbstractModel {
         List<LocalDate> list = new ArrayList<>();
 
         for (int i = 0; i < 7; i++) {
-            list.add(localDate);
+            list.add(startOfWeek.plusDays(i));
         }
 
         dayList = list;
