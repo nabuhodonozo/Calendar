@@ -3,15 +3,15 @@ package calendar.model;
 import calendar.controllers.Controller;
 import calendar.interfaces.ViewUpdate;
 import calendar.views.ButtonType;
-import calendar.views.View;
+import calendar.views.ViewType;
 
 import java.time.LocalDate;
 
 public class SkipButton implements ViewUpdate {
-    private View view = View.WEEK;
+    private ViewType viewType = ViewType.WEEK;
 
     private LocalDate calculateDate(LocalDate localDate, ButtonType buttonType) {
-        if (view == View.WEEK) {
+        if (viewType == ViewType.WEEK) {
             return changeWeek(localDate, buttonType);
         }
         return changeMonth(localDate, buttonType);
@@ -26,11 +26,10 @@ public class SkipButton implements ViewUpdate {
 
     public LocalDate changeMonth(LocalDate localDate, ButtonType buttonType) {
         if (buttonType == ButtonType.BACKWARD) {
-            return localDate.minusDays(1);
+            return localDate.minusMonths(1);
         }
         return localDate.plusMonths(1);
     }
-
 
     public void skipButtonClicked(ButtonType buttonType, LocalDate localDate) {
         LocalDate dateToPass = calculateDate(localDate, buttonType);
@@ -38,7 +37,7 @@ public class SkipButton implements ViewUpdate {
     }
 
     @Override
-    public void viewUpdate(View view) {
-        this.view = view;
+    public void viewUpdate(ViewType viewType) {
+        this.viewType = viewType;
     }
 }

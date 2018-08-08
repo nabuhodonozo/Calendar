@@ -17,7 +17,7 @@ S3: In main pass some elements as arguments in constructor.
 -----
 S1: ShouldI have 2 jpanels (week/month) one of them active the other one invisible.
 (They both ll receive events and react to them, kinda cool in small app, but in long term inactive elements are consuming resources)
-S2: Each time I switch view textFields are either deleted or added.
+S2: Each time I switch viewType textFields are either deleted or added.
 (Kinda cool, but maybe it's easier to store both of them in memory rather than draw them each time)
 
 If I chose to have those 2 jpanels. Should they both implement interfaces extend abstract class or make something like controller for them with common logic. Just loading required class with proper grid layout and number of TextFields.

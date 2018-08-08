@@ -1,7 +1,7 @@
 package calendar.views.components;
 
 import calendar.controllers.Controller;
-import calendar.views.View;
+import calendar.views.ViewType;
 import com.intellij.openapi.ui.ComboBox;
 
 import javax.swing.*;
@@ -12,12 +12,12 @@ public class ViewSwitch extends ComboBox {
     public ViewSwitch(){
         super();
 
-        this.setModel(new DefaultComboBoxModel<>(View.values()));
+        this.setModel(new DefaultComboBoxModel<>(ViewType.values()));
 
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.getInstance().updateViewDisplayComponents((View) getSelectedItem());
+                Controller.getInstance().updateViewDisplayComponents((ViewType) getSelectedItem());
             }
         });
     }

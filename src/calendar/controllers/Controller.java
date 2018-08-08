@@ -5,7 +5,7 @@ import calendar.interfaces.ViewUpdate;
 import calendar.model.ChosenDate;
 import calendar.model.SkipButton;
 import calendar.views.ButtonType;
-import calendar.views.View;
+import calendar.views.ViewType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -42,14 +42,14 @@ public class Controller {
         });
     }
 
-    public void updateViewDisplayComponents(View View) {
+    public void updateViewDisplayComponents(ViewType ViewType) {
         viewComponents.forEach(component -> {
-            component.viewUpdate(View);
+            component.viewUpdate(ViewType);
         });
     }
 
 
-    //TODO Spirng mvc approach on the other hand View can directly tell model that it was clicked. But should View be able to interact with model?
+    //TODO Spirng mvc approach on the other hand ViewType can directly tell model that it was clicked. But should ViewType be able to interact with model?
     public void skipButtonClicked(ButtonType buttonType) {
         skipButton.skipButtonClicked(buttonType, chosenDate.getLocalDate());
     }

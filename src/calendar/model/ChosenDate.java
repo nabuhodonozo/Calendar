@@ -10,8 +10,7 @@ public class ChosenDate implements DateUpdate {
     private LocalDate date = LocalDate.now();
 
     public Date getDate() {
-        DateConverter dateConverter = new DateConverter();
-        return dateConverter.LocalDatetoDate(date);
+        return DateConverter.LocalDatetoDate(date);
     }
 
     public LocalDate getLocalDate() {
@@ -23,8 +22,7 @@ public class ChosenDate implements DateUpdate {
     }
 
     public void updateDate(Date date) {
-        DateConverter dateConverter = new DateConverter();
-        this.date = dateConverter.DateToLocalDate(date);
+        this.date = DateConverter.DateToLocalDate(date);
     }
 
     @Override

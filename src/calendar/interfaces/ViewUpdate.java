@@ -1,7 +1,7 @@
 package calendar.interfaces;
 
-import calendar.views.View;
+import calendar.views.ViewType;
 
 public interface ViewUpdate {
-    void viewUpdate(View view);
+    void viewUpdate(ViewType viewType);
 }

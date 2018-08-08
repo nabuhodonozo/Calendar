@@ -1,7 +1,7 @@
 package calendar.views.panels;
 
 import calendar.views.ButtonType;
-import calendar.views.View;
+import calendar.views.ViewType;
 import calendar.views.components.DatePicker;
 import calendar.views.components.SkipButton;
 import calendar.views.components.ViewSwitch;
@@ -18,7 +18,7 @@ public class MenuPanel extends JPanel {
         this.add(datePicker);
         this.add(skipButtonForward);
 
-        JComboBox<View> viewSwitch = new ViewSwitch();
+        JComboBox<ViewType> viewSwitch = new ViewSwitch();
         this.add(viewSwitch);
     }
 }
