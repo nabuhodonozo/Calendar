@@ -19,4 +19,8 @@ public final class DateUtil {
     public static LocalDate startOfWeek(LocalDate localDate) {
         return localDate.minusDays(localDate.getDayOfWeek().getValue() - 1);
     }
+
+    public static boolean isItSameMonth(LocalDate date1, LocalDate date2) {
+        return date1.getMonth().equals(date2.getMonth());
+    }
 }

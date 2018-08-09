@@ -1,4 +1,4 @@
-package calendar.model;
+package Notes.model;
 
 public class Note {
     private StringBuilder text = new StringBuilder();

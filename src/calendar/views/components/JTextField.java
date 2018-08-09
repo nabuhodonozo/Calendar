@@ -1,8 +1,8 @@
 package calendar.views.components;
 
 
+import Notes.controller.NoteController;
 import calendar.controllers.Controller;
-import calendar.controllers.NoteController;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -25,11 +25,8 @@ public class JTextField extends javax.swing.JTextField {
                 if (mouseEvent.getButton() == 1) {
                     Controller.getInstance().updateDateDisplayComponents(LocalDate.parse(getText()));
                 } else if (mouseEvent.getButton() == 3) {
-                    //wyswietl jakis nowy jframe ale to musi byc odelegowane gdzies indziej
                     NoteController.getInstance().createNote();
                 }
-
-
             }
 
             @Override

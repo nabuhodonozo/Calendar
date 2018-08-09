@@ -1,6 +1,6 @@
-package calendar.controllers;
+package Notes.controller;
 
-import calendar.views.NoteView;
+import Notes.views.NoteView;
 
 public final class NoteController {
     private static NoteController ourInstance = new NoteController();

@@ -27,12 +27,6 @@ public abstract class CalendarDisplayAbstract extends JPanel implements DateUpda
         textFieldsDipslay.forEach(jTextField -> this.add(jTextField));
     }
 
-    public void updateTextInTextFields(List<LocalDate> dayList) {
-        List<LocalDate> list = model.getDayList();
-        for (int i = 0; i < textFieldsDipslay.size(); i++) {
-            textFieldsDipslay.get(i).setText(list.get(i).toString());
-        }
-    }
 
     public void createTextFieldDisplay(int numberOfTextFields) {
         for (int i = 0; i < numberOfTextFields; i++) {
@@ -41,20 +35,22 @@ public abstract class CalendarDisplayAbstract extends JPanel implements DateUpda
         }
     }
 
-    public void repaintFields(LocalDate localDate) {
-        for (javax.swing.JTextField textField : textFieldsDipslay) {
-            if (textField.getText().equals(localDate.toString())) {
-                textField.setBackground(Color.MAGENTA);
-            } else {
-                textField.setBackground(Color.CYAN);
-            }
+    public void updateFields(List<LocalDate> dayList, LocalDate chosenDate) {
+        List<LocalDate> list = model.getDayList();
+        for (int i = 0; i < textFieldsDipslay.size(); i++) {
+            JTextField textField = textFieldsDipslay.get(i);
+            textField.setText(list.get(i).toString());
+            repaintFields(textField, chosenDate, list.get(i));
+
         }
     }
+
+    abstract void repaintFields(JTextField textField, LocalDate chosenDate, LocalDate newDate);
+
 
 
     @Override
     public void dateUpdate(LocalDate date) {
-        updateTextInTextFields(model.getDayList());
-        repaintFields(date);
+        updateFields(model.getDayList(), date);
     }
 }
