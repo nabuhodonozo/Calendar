@@ -3,7 +3,7 @@ package calendar.views.panels;
 import calendar.controllers.Controller;
 import calendar.interfaces.DateUpdate;
 import calendar.model.CalendarDisplayAbstractModel;
-import calendar.views.components.TextFieldComp;
+import calendar.views.components.JTextField;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public abstract class CalendarDisplayAbstract extends JPanel implements DateUpdate {
     private int columns = 7;
-    private List<TextFieldComp> textFieldsDipslay = new ArrayList<>();
+    private List<JTextField> textFieldsDipslay = new ArrayList<>();
     private CalendarDisplayAbstractModel model;
 
     public CalendarDisplayAbstract(CalendarDisplayAbstractModel model, int rows) {
@@ -36,13 +36,13 @@ public abstract class CalendarDisplayAbstract extends JPanel implements DateUpda
 
     public void createTextFieldDisplay(int numberOfTextFields) {
         for (int i = 0; i < numberOfTextFields; i++) {
-            TextFieldComp textField = new TextFieldComp();
+            JTextField textField = new JTextField();
             textFieldsDipslay.add(textField);
         }
     }
 
     public void repaintFields(LocalDate localDate) {
-        for (JTextField textField : textFieldsDipslay) {
+        for (javax.swing.JTextField textField : textFieldsDipslay) {
             if (textField.getText().equals(localDate.toString())) {
                 textField.setBackground(Color.MAGENTA);
             } else {
