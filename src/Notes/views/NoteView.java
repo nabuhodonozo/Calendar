@@ -1,4 +1,4 @@
-package calendar.views;
+package Notes.views;
 
 import javax.swing.*;
 
@@ -15,6 +15,7 @@ public class NoteView extends JFrame {
     private void initUI() {
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
 
+        //todo Has to show previous notes if none then show JTextPene
         add(jTextPane);
         add(jPanel);
         jPanel.add(saveButton);
