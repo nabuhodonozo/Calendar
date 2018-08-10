@@ -2,7 +2,7 @@ package calendar.views.panels;
 
 import calendar.model.CalendarDisplayMonthModel;
 import calendar.utils.DateUtil;
-import calendar.views.components.JTextField;
+import calendar.views.components.DayTextField;
 
 import java.awt.*;
 import java.time.LocalDate;
@@ -13,7 +13,7 @@ public class CalendarDisplayMonth extends CalendarDisplayAbstract {
     }
 
     @Override
-    void repaintFields(JTextField textField, LocalDate chosenDate, LocalDate newDate) {
+    void repaintFields(DayTextField textField, LocalDate chosenDate, LocalDate newDate) {
         if (textField.getText().equals(chosenDate.toString())) {
             textField.setBackground(Color.yellow);
         } else if (DateUtil.isItSameMonth(chosenDate, newDate)) {

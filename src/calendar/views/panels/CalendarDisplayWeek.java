@@ -1,7 +1,7 @@
 package calendar.views.panels;
 
 import calendar.model.CalendarDisplayWeekModel;
-import calendar.views.components.JTextField;
+import calendar.views.components.DayTextField;
 
 import java.awt.*;
 import java.time.LocalDate;
@@ -12,7 +12,7 @@ public class CalendarDisplayWeek extends CalendarDisplayAbstract {
     }
 
     @Override
-    void repaintFields(JTextField textField, LocalDate chosenDate, LocalDate newDate) {
+    void repaintFields(DayTextField textField, LocalDate chosenDate, LocalDate newDate) {
         if (textField.getText().equals(chosenDate.toString())) {
             textField.setBackground(Color.yellow);
         } else {

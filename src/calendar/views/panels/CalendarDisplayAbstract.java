@@ -3,7 +3,7 @@ package calendar.views.panels;
 import calendar.controllers.Controller;
 import calendar.interfaces.DateUpdate;
 import calendar.model.CalendarDisplayAbstractModel;
-import calendar.views.components.JTextField;
+import calendar.views.components.DayTextField;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public abstract class CalendarDisplayAbstract extends JPanel implements DateUpdate {
     private int columns = 7;
-    private List<JTextField> textFieldsDipslay = new ArrayList<>();
+    private List<DayTextField> textFieldsDipslay = new ArrayList<>();
     private CalendarDisplayAbstractModel model;
 
     public CalendarDisplayAbstract(CalendarDisplayAbstractModel model, int rows) {
@@ -24,13 +24,13 @@ public abstract class CalendarDisplayAbstract extends JPanel implements DateUpda
 
         createTextFieldDisplay(rows * columns);
 
-        textFieldsDipslay.forEach(jTextField -> this.add(jTextField));
+        textFieldsDipslay.forEach(dayTextField -> this.add(dayTextField));
     }
 
 
     public void createTextFieldDisplay(int numberOfTextFields) {
         for (int i = 0; i < numberOfTextFields; i++) {
-            JTextField textField = new JTextField();
+            DayTextField textField = new DayTextField();
             textFieldsDipslay.add(textField);
         }
     }
@@ -38,14 +38,14 @@ public abstract class CalendarDisplayAbstract extends JPanel implements DateUpda
     public void updateFields(List<LocalDate> dayList, LocalDate chosenDate) {
         List<LocalDate> list = model.getDayList();
         for (int i = 0; i < textFieldsDipslay.size(); i++) {
-            JTextField textField = textFieldsDipslay.get(i);
+            DayTextField textField = textFieldsDipslay.get(i);
             textField.setText(list.get(i).toString());
             repaintFields(textField, chosenDate, list.get(i));
 
         }
     }
 
-    abstract void repaintFields(JTextField textField, LocalDate chosenDate, LocalDate newDate);
+    abstract void repaintFields(DayTextField textField, LocalDate chosenDate, LocalDate newDate);
 
 
 

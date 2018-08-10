@@ -2,8 +2,8 @@ package calendar.controllers;
 
 import calendar.interfaces.DateUpdate;
 import calendar.interfaces.ViewUpdate;
-import calendar.model.ChosenDate;
-import calendar.model.SkipButton;
+import calendar.service.ChosenDate;
+import calendar.service.SkipButton;
 import calendar.views.ButtonType;
 import calendar.views.ViewType;
 
@@ -13,8 +13,10 @@ import java.util.List;
 
 public class Controller {
     private static Controller ourInstance = new Controller();
+
     private List<DateUpdate> dateComponents = new ArrayList<>();
     private List<ViewUpdate> viewComponents = new ArrayList<>();
+
     private ChosenDate chosenDate = new ChosenDate();
     private SkipButton skipButton = new SkipButton();
 
@@ -36,15 +38,11 @@ public class Controller {
     }
 
     public void updateDateDisplayComponents(LocalDate date) {
-        dateComponents.forEach(component -> {
-            component.dateUpdate(date);
-        });
+        dateComponents.forEach(component -> component.dateUpdate(date));
     }
 
-    public void updateViewDisplayComponents(ViewType ViewType) {
-        viewComponents.forEach(component -> {
-            component.viewUpdate(ViewType);
-        });
+    public void updateViewDisplayComponents(ViewType viewType) {
+        viewComponents.forEach(component -> component.viewUpdate(viewType));
     }
 
 

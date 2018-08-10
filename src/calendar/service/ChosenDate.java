@@ -1,4 +1,4 @@
-package calendar.model;
+package calendar.service;
 
 import calendar.interfaces.DateUpdate;
 

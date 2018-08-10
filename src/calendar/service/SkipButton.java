@@ -1,4 +1,4 @@
-package calendar.model;
+package calendar.service;
 
 import calendar.controllers.Controller;
 import calendar.interfaces.ViewUpdate;
