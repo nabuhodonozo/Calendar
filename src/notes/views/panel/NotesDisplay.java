@@ -1,5 +1,6 @@
 package notes.views.panel;
 
+import notes.model.Note;
 import notes.views.component.NoteTextField;
 
 import javax.swing.*;
@@ -14,17 +15,18 @@ public class NotesDisplay extends JPanel {
         setLayout(gridLayout);
     }
 
-    public void onNoteAdded(List<String> noteList) {
+    public void onNoteAdded(List<Note> noteList) {
         removeAll();
         revalidate();
+        repaint();
 
         int dimensionParameter = (int) Math.sqrt(noteList.size()) + 1;
 
         gridLayout.setColumns(dimensionParameter);
         gridLayout.setRows(dimensionParameter);
 
-        for (String string : noteList) {
-            NoteTextField noteTextField = new NoteTextField(string);
+        for (Note note : noteList) {
+            NoteTextField noteTextField = new NoteTextField(note);
             add(noteTextField);
         }
     }

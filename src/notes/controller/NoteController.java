@@ -1,5 +1,6 @@
 package notes.controller;
 
+import notes.model.Note;
 import notes.model.NotesDB;
 import notes.views.NoteView;
 import notes.views.panel.NoteEdit;
@@ -21,8 +22,9 @@ public final class NoteController {
     private NotesDisplay notesDisplay = noteView.getTopPanel().getNotesDisplay();
     private TopPanel topPanel = noteView.getTopPanel();
 
-    private List<String> noteList;
+    private List<Note> noteList;
     private LocalDate noteDate;
+    private Note currentlyEditedNote;
 
     public static NoteController getInstance() {
         return ourInstance;
@@ -48,15 +50,26 @@ public final class NoteController {
             noteList = new ArrayList<>();
             notesDB.getNotesMap().put(noteDate, noteList);
         }
-        noteList.add(noteEdit.getText());
 
+        if (currentlyEditedNote.getText() == null) {
+            noteList.add(currentlyEditedNote);
+        }
 
-        cardLayout.show(topPanel, notesDisplay.getClass().getSimpleName());
+        currentlyEditedNote.setText(noteEdit.getText());
+
         notesDisplay.onNoteAdded(noteList);
+        cardLayout.show(topPanel, notesDisplay.getClass().getSimpleName());
     }
 
     public void newNote() {
+        currentlyEditedNote = new Note();
         cardLayout.show(topPanel, noteEdit.getClass().getSimpleName());
         noteEdit.setText("");
+    }
+
+    public void editNote(Note note) {
+        currentlyEditedNote = note;
+        cardLayout.show(topPanel, noteEdit.getClass().getSimpleName());
+        noteEdit.setText(note.getText());
     }
 }
