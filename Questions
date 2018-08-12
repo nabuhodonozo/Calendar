@@ -1,0 +1,32 @@
+Brakuje mi kolejnej warstwy.
+Niby odzielilem model od widoku, ale wydaje mi sie ze model to jest jak encja. To ma tylko za zadanie trzymac dane.
+Model ma je reprezentowac.
+W takim razie brakuje mi czegos co bedzie zarzadzac logika modelu. Niby kontroller, ale wlasnie chyba brakuje mi czegos ala serwisy.
+
+Dlaczego jest tylko jeden kontroller?
+
+
+
+
+-----
+
+Kazdy TextFieldmodel ma w sobie List<Note> notesDBS;
+Jesli jest pusta to automatycznie jest okno tworzenia nowej.
+Jesli ma elementy to sa wyswietlane notatki. Po kliknieciu ktorejs otwiera sie dopiero okno edycji.
+
+
+TopPanel has to receive list of notesDBS from clicked TextField.
+and decide whih panel to show.
+
+jego new Button bedzie tworzyl nowa notke
+save button bedzie zapisywal
+
+
+
+Clicked TexField > controller I got clicked(mojeListaNotatek) >
+Controller makes new JFrame feeds it with mojeListaNotatek >
+JFrame feeds TopPanel with mojeListaNotatek i tutaj dopiero logika.....
+(At this moment it's kinda fooked up, cuz List is forwarded tooooo many times without anything happening to it.) And TopPanel has to do all the logic
+
+Soooo what if everything in View is public or worse static or has getters to all of it's components? Then Controller would be able to do the logic and also controll views
+or there is integrated method to get elements childs O.o (".") ... damn apparently not ); but hey hey ! I can make list of em ... (Great idea, but stupid if I am goin to get child of a child of a child)... damn ima kill myself

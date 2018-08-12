@@ -22,6 +22,7 @@ public final class NoteController {
     private TopPanel topPanel = noteView.getTopPanel();
 
     private List<String> noteList;
+    private LocalDate noteDate;
 
     public static NoteController getInstance() {
         return ourInstance;
@@ -30,11 +31,11 @@ public final class NoteController {
     public void showNotesEvent(String date) {
         noteView.setVisible(true);
         noteView.setTitle("Note " + date);
-        noteList = notesDB.getNotesMap().get(LocalDate.parse(date));
+
+        noteDate = LocalDate.parse(date);
+        noteList = notesDB.getNotesMap().get(noteDate);
 
         if (noteList == null) {
-            noteList = new ArrayList<String>();
-            notesDB.getNotesMap().put(LocalDate.parse(date), noteList);
             newNote();
         } else {
             notesDisplay.onNoteAdded(noteList);
@@ -43,21 +44,19 @@ public final class NoteController {
     }
 
     public void saveNote() {
+        if (noteList == null) {
+            noteList = new ArrayList<>();
+            notesDB.getNotesMap().put(noteDate, noteList);
+        }
         noteList.add(noteEdit.getText());
-        notesDisplay.onNoteAdded(noteList);
+
+
         cardLayout.show(topPanel, notesDisplay.getClass().getSimpleName());
+        notesDisplay.onNoteAdded(noteList);
     }
 
     public void newNote() {
         cardLayout.show(topPanel, noteEdit.getClass().getSimpleName());
         noteEdit.setText("");
     }
-
-/*    private void actionBasedOnNotesList(List<String> notesList) {
-        if (notesList.isEmpty()) {
-            cardLayout.show(topPanel, noteEdit.getClass().getSimpleName());
-        } else {
-            cardLayout.show(topPanel, notesDisplay.getClass().getSimpleName());
-        }
-    }*/
 }
