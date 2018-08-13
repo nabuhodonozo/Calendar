@@ -1,9 +1,9 @@
 package pl.solsoft.calendar.views.components;
 
+import org.jdesktop.swingx.JXDatePicker;
 import pl.solsoft.calendar.controllers.Controller;
 import pl.solsoft.calendar.interfaces.DateUpdate;
 import pl.solsoft.calendar.utils.DateUtil;
-import org.jdesktop.swingx.JXDatePicker;
 
 import java.time.LocalDate;
 

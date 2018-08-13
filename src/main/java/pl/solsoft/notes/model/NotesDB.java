@@ -12,7 +12,7 @@ public class NotesDB {
         return notesMap;
     }
 
-    public List<Note> getNoteListByDate(LocalDate localDate){
+    public List<Note> getNoteListByDate(LocalDate localDate) {
         return notesMap.get(localDate);
     }
 }

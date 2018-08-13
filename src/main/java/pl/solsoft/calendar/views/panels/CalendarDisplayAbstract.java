@@ -36,7 +36,7 @@ public abstract class CalendarDisplayAbstract extends JPanel implements DateUpda
     }
 
     public void updateFields(List<LocalDate> dayList, LocalDate chosenDate) {
-        List<LocalDate> list = model.getDayList();
+        List<LocalDate> list = model.getTextFieldsList();
         for (int i = 0; i < textFieldsDipslay.size(); i++) {
             DayTextField textField = textFieldsDipslay.get(i);
             textField.setText(list.get(i).toString());
@@ -50,6 +50,6 @@ public abstract class CalendarDisplayAbstract extends JPanel implements DateUpda
 
     @Override
     public void dateUpdate(LocalDate date) {
-        updateFields(model.getDayList(), date);
+        updateFields(model.getTextFieldsList(), date);
     }
 }

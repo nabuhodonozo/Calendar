@@ -3,20 +3,16 @@ package pl.solsoft.calendar.model;
 import pl.solsoft.calendar.utils.DateUtil;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CalendarDisplayWeekModel extends CalendarDisplayAbstractModel {
+
+
+    public CalendarDisplayWeekModel() {
+        super(7);
+    }
+
     @Override
-    public void updateDatesInList(LocalDate localDate) {
-        LocalDate startOfWeek = DateUtil.startOfWeek(localDate);
-
-        List<LocalDate> list = new ArrayList<>();
-
-        for (int i = 0; i < 7; i++) {
-            list.add(startOfWeek.plusDays(i));
-        }
-
-        dayList = list;
+    LocalDate calculateStartingDate(LocalDate localDate) {
+        return DateUtil.startOfWeek(localDate);
     }
 }

@@ -8,7 +8,8 @@ public class Note {
         this.text = text;
     }
 
-    public Note() {}
+    public Note() {
+    }
 
     public boolean isRecentlyCreated() {
         return recentlyCreated;
