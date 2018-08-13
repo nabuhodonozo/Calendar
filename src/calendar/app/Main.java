@@ -1,11 +1,14 @@
 package calendar.app;
 
-import calendar.View.View;
+import calendar.views.MainView;
 
-import javax.swing.JFrame;
+import java.awt.*;
 
-public class Main extends JFrame {
+public class Main {
     public static void main(String[] args) {
-        View.run();
+        EventQueue.invokeLater(() -> {
+            MainView mainView = new MainView();
+            mainView.setVisible(true);
+        });
     }
 }
