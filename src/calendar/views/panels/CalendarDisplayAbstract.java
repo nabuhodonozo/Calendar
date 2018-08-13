@@ -24,7 +24,7 @@ public abstract class CalendarDisplayAbstract extends JPanel implements DateUpda
 
         createTextFieldDisplay(rows * columns);
 
-        textFieldsDipslay.forEach(dayTextField -> this.add(dayTextField));
+        textFieldsDipslay.forEach(this::add);
     }
 
 

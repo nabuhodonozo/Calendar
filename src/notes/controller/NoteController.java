@@ -51,7 +51,7 @@ public final class NoteController {
             notesDB.getNotesMap().put(noteDate, noteList);
         }
 
-        if (currentlyEditedNote.getText() == null) {
+        if (currentlyEditedNote.isNew()) {
             noteList.add(currentlyEditedNote);
         }
 
@@ -69,6 +69,7 @@ public final class NoteController {
 
     public void editNote(Note note) {
         currentlyEditedNote = note;
+        currentlyEditedNote.setNew(false);
         cardLayout.show(topPanel, noteEdit.getClass().getSimpleName());
         noteEdit.setText(note.getText());
     }
