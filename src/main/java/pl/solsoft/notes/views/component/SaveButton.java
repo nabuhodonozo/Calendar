@@ -8,6 +8,6 @@ public class SaveButton extends JButton {
     public SaveButton() {
         setText("Save");
 
-        addActionListener(actionListener -> NotesService.getInstance().saveNote());
+        addActionListener(actionListener -> NotesService.getInstance().saveNoteEvent());
     }
 }

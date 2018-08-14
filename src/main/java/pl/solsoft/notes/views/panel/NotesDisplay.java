@@ -26,7 +26,8 @@ public class NotesDisplay extends JPanel {
         gridLayout.setRows(dimensionParameter);
 
         for (Note note : noteList) {
-            NoteTextField noteTextField = new NoteTextField(note);
+            NoteTextField noteTextField = new NoteTextField(note.getID());
+            noteTextField.setText(note.getText());
             add(noteTextField);
         }
     }

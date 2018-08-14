@@ -1,25 +1,40 @@
 package pl.solsoft.notes.model;
 
+import pl.solsoft.notes.interfaces.DatabaseInterface;
+
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class NotesDB {
-    private Map<LocalDate, List<Note>> notesMap = new HashMap<>();
-
-    public Map<LocalDate, List<Note>> getNotesMap() {
-        return notesMap;
-    }
+public class NotesDB implements DatabaseInterface {
+    private List<Note> noteList = new ArrayList<>();
 
     public List<Note> getNoteListByDate(LocalDate localDate) {
-        return notesMap.get(localDate);
+        return noteList.stream()
+                .filter(note -> note.getCreationDate().toString().equals(localDate.toString()))
+                .collect(Collectors.toList());
     }
 
-    public void addNote(LocalDate day, Note note) {
-        List<Note> noteList = Optional.ofNullable(notesMap.get(day)).orElse(new ArrayList<>());
+    public void saveNote(Note note) {
+        if (noteList.contains(note)) {
+            noteList.set(noteList.indexOf(note), note);
+        } else {
+            noteList.add(note);
+        }
+    }
 
-        noteList.add(note);
+    public void removeNote(int id) {
+        noteList.remove(getNoteById(id));
+    }
 
-        notesMap.put(day, noteList);
+    public Note getNoteById(int id) {
+        for (Note note : noteList) {
+            if (note.getID() == id) {
+                return note;
+            }
+        }
+        return null;
     }
 }
 
