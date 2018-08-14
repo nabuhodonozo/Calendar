@@ -26,9 +26,9 @@ public class DayTextField extends javax.swing.JTextField {
         addMouseListener(new MouseListener() {
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
-                if (mouseEvent.getButton() == 1) {
+                if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
                     Controller.getInstance().updateDateDisplayComponents(LocalDate.parse(getText()));
-                } else if (mouseEvent.getButton() == 3) {
+                } else if (mouseEvent.getButton() == MouseEvent.BUTTON3) {
                     noteEvent();
                 }
             }

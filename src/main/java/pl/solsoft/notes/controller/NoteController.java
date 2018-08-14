@@ -9,8 +9,6 @@ import pl.solsoft.notes.views.panel.TopPanel;
 
 import java.awt.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public final class NoteController {
     private static NoteController ourInstance = new NoteController();
@@ -22,9 +20,8 @@ public final class NoteController {
     private NotesDisplay notesDisplay = noteView.getTopPanel().getNotesDisplay();
     private TopPanel topPanel = noteView.getTopPanel();
 
-    private List<Note> noteList;
     private LocalDate noteDate;
-    private Note currentlyEditedNote;
+    private Note currentNote;
 
     public static NoteController getInstance() {
         return ourInstance;
@@ -35,41 +32,35 @@ public final class NoteController {
         noteView.setTitle("Note " + date);
 
         noteDate = LocalDate.parse(date);
-        noteList = notesDB.getNoteListByDate(noteDate);
 
-        if (noteList == null) {
+        if (notesDB.getNoteListByDate(noteDate) == null) {
             newNote();
         } else {
-            notesDisplay.onNoteAdded(noteList);
+            notesDisplay.onNoteAdded(notesDB.getNoteListByDate(noteDate));
             cardLayout.show(topPanel, notesDisplay.getClass().getSimpleName());
         }
     }
 
     public void saveNote() {
-        if (noteList == null) {
-            noteList = new ArrayList<>();
-            notesDB.getNotesMap().put(noteDate, noteList);
+        if (currentNote.isRecentlyCreated()) {
+            notesDB.addNote(noteDate, currentNote);
         }
 
-        if (currentlyEditedNote.isRecentlyCreated()) {
-            noteList.add(currentlyEditedNote);
-        }
+        currentNote.setText(noteEdit.getText());
 
-        currentlyEditedNote.setText(noteEdit.getText());
-
-        notesDisplay.onNoteAdded(noteList);
+        notesDisplay.onNoteAdded(notesDB.getNoteListByDate(noteDate));
         cardLayout.show(topPanel, notesDisplay.getClass().getSimpleName());
     }
 
     public void newNote() {
-        currentlyEditedNote = new Note();
+        currentNote = new Note();
         cardLayout.show(topPanel, noteEdit.getClass().getSimpleName());
         noteEdit.setText("");
     }
 
     public void editNote(Note note) {
-        currentlyEditedNote = note;
-        currentlyEditedNote.setRecentlyCreated(false);
+        currentNote = note;
+        currentNote.setRecentlyCreated(false);
         cardLayout.show(topPanel, noteEdit.getClass().getSimpleName());
         noteEdit.setText(note.getText());
     }
