@@ -2,7 +2,7 @@ package pl.solsoft.calendar.views.components;
 
 
 import pl.solsoft.calendar.controllers.Controller;
-import pl.solsoft.notes.controller.NoteController;
+import pl.solsoft.notes.services.NotesService;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -19,7 +19,7 @@ public class DayTextField extends javax.swing.JTextField {
     }
 
     private void noteEvent() {
-        NoteController.getInstance().showNotesEvent(getText());
+        NotesService.getInstance().showNotesEvent(getText());
     }
 
     private void addMouseListener() {

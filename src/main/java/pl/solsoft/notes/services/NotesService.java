@@ -1,4 +1,4 @@
-package pl.solsoft.notes.controller;
+package pl.solsoft.notes.services;
 
 import pl.solsoft.notes.model.Note;
 import pl.solsoft.notes.model.NotesDB;
@@ -10,8 +10,8 @@ import pl.solsoft.notes.views.panel.TopPanel;
 import java.awt.*;
 import java.time.LocalDate;
 
-public final class NoteController {
-    private static NoteController ourInstance = new NoteController();
+public final class NotesService {
+    private static NotesService ourInstance = new NotesService();
     private NotesDB notesDB = new NotesDB();
     private NoteView noteView = new NoteView();
 
@@ -23,7 +23,7 @@ public final class NoteController {
     private LocalDate noteDate;
     private Note currentNote;
 
-    public static NoteController getInstance() {
+    public static NotesService getInstance() {
         return ourInstance;
     }
 
@@ -36,8 +36,7 @@ public final class NoteController {
         if (notesDB.getNoteListByDate(noteDate) == null) {
             newNote();
         } else {
-            notesDisplay.onNoteAdded(notesDB.getNoteListByDate(noteDate));
-            cardLayout.show(topPanel, notesDisplay.getClass().getSimpleName());
+            showNoteDisplayPanel();
         }
     }
 
@@ -47,21 +46,29 @@ public final class NoteController {
         }
 
         currentNote.setText(noteEdit.getText());
-
-        notesDisplay.onNoteAdded(notesDB.getNoteListByDate(noteDate));
-        cardLayout.show(topPanel, notesDisplay.getClass().getSimpleName());
+        showNoteDisplayPanel();
     }
+
 
     public void newNote() {
         currentNote = new Note();
-        cardLayout.show(topPanel, noteEdit.getClass().getSimpleName());
+        showEditNotePanel();
         noteEdit.setText("");
     }
 
     public void editNote(Note note) {
         currentNote = note;
         currentNote.setRecentlyCreated(false);
-        cardLayout.show(topPanel, noteEdit.getClass().getSimpleName());
+        showEditNotePanel();
         noteEdit.setText(note.getText());
+    }
+
+    private void showEditNotePanel() {
+        cardLayout.show(topPanel, noteEdit.getClass().getSimpleName());
+    }
+
+    private void showNoteDisplayPanel() {
+        notesDisplay.onNoteAdded(notesDB.getNoteListByDate(noteDate));
+        cardLayout.show(topPanel, notesDisplay.getClass().getSimpleName());
     }
 }

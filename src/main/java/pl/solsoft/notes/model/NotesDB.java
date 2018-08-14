@@ -20,7 +20,6 @@ public class NotesDB {
         noteList.add(note);
 
         notesMap.put(day, noteList);
-
     }
 }
 

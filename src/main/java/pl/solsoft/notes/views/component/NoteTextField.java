@@ -1,7 +1,7 @@
 package pl.solsoft.notes.views.component;
 
-import pl.solsoft.notes.controller.NoteController;
 import pl.solsoft.notes.model.Note;
+import pl.solsoft.notes.services.NotesService;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -16,7 +16,7 @@ public class NoteTextField extends javax.swing.JTextField {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
-                NoteController.getInstance().editNote(note);
+                NotesService.getInstance().editNote(note);
             }
 
             @Override
