@@ -1,22 +1,24 @@
 package pl.solsoft.notes.model;
 
+import java.time.LocalDate;
+
 public class Note {
+    private static int idCounter;
+    private final int ID;
+    private LocalDate creationDate;
     private String text;
-    private boolean recentlyCreated = true;
 
-    public Note(String text) {
-        this.text = text;
+    public Note(LocalDate creationDate) {
+        this.creationDate = creationDate;
+        ID = idCounter++;
     }
 
-    public Note() {
+    public LocalDate getCreationDate() {
+        return creationDate;
     }
 
-    public boolean isRecentlyCreated() {
-        return recentlyCreated;
-    }
-
-    public void setRecentlyCreated(boolean recentlyCreated) {
-        this.recentlyCreated = recentlyCreated;
+    public int getID() {
+        return ID;
     }
 
     public String getText() {

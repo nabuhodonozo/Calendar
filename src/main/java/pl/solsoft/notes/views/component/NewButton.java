@@ -1,6 +1,6 @@
 package pl.solsoft.notes.views.component;
 
-import pl.solsoft.notes.controller.NoteController;
+import pl.solsoft.notes.services.NotesService;
 
 import javax.swing.*;
 
@@ -8,6 +8,6 @@ public class NewButton extends JButton {
     public NewButton() {
         setText("New");
 
-        addActionListener(actionEvent -> NoteController.getInstance().newNote());
+        addActionListener(actionEvent -> NotesService.getInstance().newNote());
     }
 }

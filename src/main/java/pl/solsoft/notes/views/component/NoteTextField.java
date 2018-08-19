@@ -1,14 +1,12 @@
 package pl.solsoft.notes.views.component;
 
-import pl.solsoft.notes.controller.NoteController;
-import pl.solsoft.notes.model.Note;
+import pl.solsoft.notes.services.NotesService;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class NoteTextField extends javax.swing.JTextField {
-    public NoteTextField(Note note) {
-        setText(note.getText());
+    public NoteTextField(int noteID) {
         setHorizontalAlignment(javax.swing.JTextField.CENTER);
         setEditable(false);
         setHighlighter(null);
@@ -16,7 +14,11 @@ public class NoteTextField extends javax.swing.JTextField {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
-                NoteController.getInstance().editNote(note);
+                if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
+                    NotesService.getInstance().editNoteEvent(noteID);
+                } else if (mouseEvent.getButton() == MouseEvent.BUTTON3) {
+                    NotesService.getInstance().removeNote(noteID);
+                }
             }
 
             @Override

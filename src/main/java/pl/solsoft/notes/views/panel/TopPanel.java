@@ -6,20 +6,20 @@ import java.awt.*;
 public class TopPanel extends JPanel {
     private CardLayout cardLayout = new CardLayout();
     private NotesDisplay notesDisplay = new NotesDisplay();
-    private NoteEdit noteEdit = new NoteEdit();
+    private NoteEditPanel noteEditPanel = new NoteEditPanel();
 
     public TopPanel() {
         setLayout(cardLayout);
         add(notesDisplay, notesDisplay.getClass().getSimpleName());
-        add(noteEdit, noteEdit.getClass().getSimpleName());
+        add(noteEditPanel, noteEditPanel.getClass().getSimpleName());
     }
 
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
-    public NoteEdit getNoteEdit() {
-        return noteEdit;
+    public NoteEditPanel getNoteEditPanel() {
+        return noteEditPanel;
     }
 
     public NotesDisplay getNotesDisplay() {
